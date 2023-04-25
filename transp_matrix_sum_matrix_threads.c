@@ -32,14 +32,9 @@ void *turn_into_sum_thread(void *args) {
     first_row /= args_->p;
     int last_row = args_->n * (args_->k + 1);
     last_row = last_row / args_->p;
-//    printf("<%i><%i>\n", first_row, last_row);
-//    printf("<>><\n");
     for (int i = first_row; i < last_row; i++) {
         for (int j = i; j < args_->n; j++) {
-            //printf("before %i<<\n", args_->matrix[i * args_->n + j]);
-            //printf("%i--%i\n", i, j);
             args_->matrix[i * args_->n + j] = (args_->matrix[i * args_->n + j] + args_->matrix[j * args_->n + i]) / 2;
-            //printf("after %i<<\n", (args_->matrix[i * args_->n + j] + args_->matrix[j * args_->n + i]) / 2);
             args_->matrix[j * args_->n + i] = args_->matrix[i * args_->n + j];
         }
     }
